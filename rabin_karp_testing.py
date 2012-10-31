@@ -5,7 +5,10 @@ from rabin_karp import RabinKarp
 class RabinKarpTests(unittest.TestCase):
 	""" Testing Rabin-Karp algorithm implementation  """
 	def setUp(self):
-		pass
+		self.words = [("Lelo","LeloLelo", 0),
+					  ("a","stiojgps", -1),
+					  ("o","stiojgps", 3)
+					 ]
 	
 	def testNull(self):
 		rk = RabinKarp()
@@ -23,8 +26,9 @@ class RabinKarpTests(unittest.TestCase):
 
 	def testWord(self):
 		rk = RabinKarp()
-		self.assertEqual(rk.search("Lelo","LeloLelo"), 0)
-		
+		for w in self.words:
+			self.assertEqual(rk.search(w[0],w[1]), w[2])
+
 
 if __name__ == '__main__':
     unittest.main()
