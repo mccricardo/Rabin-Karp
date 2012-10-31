@@ -21,7 +21,10 @@ class RabinKarpTests(unittest.TestCase):
 		rk = RabinKarp()
 		self.assertEqual(rk.search("LeloLelo","lelo"), -1)
 
-
+	def testWord(self):
+		rk = RabinKarp()
+		self.assertEqual(rk.search("Lelo","LeloLelo"), 0)
+		
 
 if __name__ == '__main__':
     unittest.main()

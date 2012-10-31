@@ -1,3 +1,5 @@
+import hashlib
+
 class RabinKarp:
 	def __init__(self):
 		self.text = ""
@@ -8,6 +10,22 @@ class RabinKarp:
 			return -1
 		if substring == "" or string == "":
 			return -1
-			
+
 		if len(substring) > len(string):
 			return -1
+
+		hsub = hashlib.md5()
+		hsub.update(substring)
+		hs = hashlib.md5()
+		hs.update(string[0:len(substring)])
+
+		for i in range(len(string)-len(substring)+1):
+			if hs.digest() == hsub.digest():				
+				if string[i:i+len(substring)] == substring:
+					return i
+
+			hs = hashlib.md5()
+			hs.update(string[i+1:i+len(substring)])
+
+		return -1
+
