@@ -6,8 +6,12 @@ class RabinKarpTests(unittest.TestCase):
 	""" Testing Rabin-Karp algorithm implementation  """
 	def setUp(self):
 		self.words = [("Lelo","LeloLelo", 0),
+					  ("Lelo","leloLelo", 4),
 					  ("a","stiojgps", -1),
-					  ("o","stiojgps", 3)
+					  ("o","stiojgps", 3),
+					  ("g","stiojgps", 5),
+					  ("Lelo","garbageLelogarbage", 7),
+					  ("Ricardo", "qwerty _Ricardo_ qwerty", 8)
 					 ]
 	
 	def testNull(self):
