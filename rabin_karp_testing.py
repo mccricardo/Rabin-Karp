@@ -1,7 +1,6 @@
 import unittest
 from rabin_karp import RabinKarp
 
-
 class RabinKarpTests(unittest.TestCase):
 	""" Testing Rabin-Karp algorithm implementation  """
 	def setUp(self):
