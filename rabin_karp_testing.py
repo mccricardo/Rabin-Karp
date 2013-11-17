@@ -1,5 +1,5 @@
 import unittest
-from rabin_karp import RabinKarp
+from rabin_karp import rabin_karp
 
 class RabinKarpTests(unittest.TestCase):
 	""" Testing Rabin-Karp algorithm implementation  """
@@ -14,23 +14,19 @@ class RabinKarpTests(unittest.TestCase):
 					 ]
 	
 	def testNull(self):
-		rk = RabinKarp()
-		self.assertEqual(rk.search(None, None), -1)
+		self.assertEqual(rabin_karp(None, None), -1)
 
 	def testEmpty(self):
-		rk = RabinKarp()
-		self.assertEqual(rk.search("",""), -1)
-		self.assertEqual(rk.search(""," "), -1)		
-		self.assertEqual(rk.search(" ",""), -1)		
+		self.assertEqual(rabin_karp("",""), -1)
+		self.assertEqual(rabin_karp(""," "), -1)		
+		self.assertEqual(rabin_karp(" ",""), -1)		
 
-	def testSubBigger(self):
-		rk = RabinKarp()
-		self.assertEqual(rk.search("LeloLelo","lelo"), -1)
+	def testSubBigger(self):		
+		self.assertEqual(rabin_karp("LeloLelo","lelo"), -1)
 
-	def testWord(self):
-		rk = RabinKarp()
+	def testWord(self):		
 		for w in self.words:
-			self.assertEqual(rk.search(w[0],w[1]), w[2])
+			self.assertEqual(rabin_karp(w[0],w[1]), w[2])
 
 
 if __name__ == '__main__':

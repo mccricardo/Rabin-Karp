@@ -23,30 +23,25 @@ class RollingHash:
 		return self.str[self.init:self.end]
 
 
-class RabinKarp:
-	def __init__(self):
-		self.text = ""
-		self.sub = ""
 
-	def search(self, substring, string):
-		if substring == None or string == None:
-			return -1
-		if substring == "" or string == "":
-			return -1
-
-		if len(substring) > len(string):
-			return -1
-
-		hs 	 = RollingHash(string, len(substring))
-		hsub = RollingHash(substring, len(substring))
-		hsub.update()
-		
-		for i in range(len(string)-len(substring)+1):						
-			if hs.digest() == hsub.digest():
-				print hs.text(), substring
-				if hs.text() == substring:
-					return i
-			hs.update()
-
+def rabin_karp(substring, string):
+	if substring == None or string == None:
 		return -1
+	if substring == "" or string == "":
+		return -1
+
+	if len(substring) > len(string):
+		return -1
+
+	hs 	 = RollingHash(string, len(substring))
+	hsub = RollingHash(substring, len(substring))
+	hsub.update()
+		
+	for i in range(len(string)-len(substring)+1):						
+		if hs.digest() == hsub.digest():
+			if hs.text() == substring:
+				return i
+		hs.update()
+
+	return -1
 		
